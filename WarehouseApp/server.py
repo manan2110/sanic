@@ -46,15 +46,15 @@ async def add_products(request):
     return response.json(product)
 
 
-# @app.put("/<id_:int>")
-# async def update_product(request, id_):
-#     product = request.json
-#     print(product)
-#     if id_ in range(len(products_db)):
-#         product[id_] = product
-#     else:
-#         return response.json({"error": "No product with given id"})
-#     return response.json(product)
+@app.put("/<id_:int>")
+async def update_product(request, id_):
+    product = request.json
+    print(product)
+    if id_ in range(len(products_db)):
+        products_db[id_] = product
+    else:
+        return response.json({"error": "No product with given id"})
+    return response.json(product)
 
 
 @app.delete("/<id_:int>")
